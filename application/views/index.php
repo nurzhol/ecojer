@@ -39,7 +39,7 @@
                            </div>
                            <div class="post-content" >
                               <div class="post-date">
-                                 <span class="month"><?php echo date('M',strtotime($new->created_date));?></span>
+                                 <span class="month"><?php echo $this->lang->line(date('M',strtotime($new->created_date)));?></span>
                                  <span class="date"><?php echo date('d',strtotime($new->created_date));?></span>
                               </div>
                               <h5 class="post-title"><a href="<?php echo base_url('news/'.$new->id);?>"><?php echo $new->title;?></a></h5>
