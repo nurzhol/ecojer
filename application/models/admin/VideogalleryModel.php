@@ -57,7 +57,7 @@ class VideogalleryModel extends CI_Model
 				'status'=>$this->input->post('status'),
 				'image'=>$this->input->post('image_name'),
 				'language'=>$this->input->post('language'),
-				'video'=>$this->input->post('video_name')
+				'video'=>$this->input->post('video')
 			);
 			if($this->db->insert('videogallery',$data)){
 				return 'true';
@@ -83,7 +83,7 @@ class VideogalleryModel extends CI_Model
 			$status = $this->input->post('status');
 			$language=$this->input->post('language');
 			$image_name=$this->input->post('image_name');
-			$video_name=$this->input->post('video_name');
+			$video_name=$this->input->post('video');
 
 	        $this->db->set('title', $title);
 	        $this->db->set('description', $description);

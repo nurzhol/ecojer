@@ -23,7 +23,7 @@
                                          <th>S.no</th>
                                          <th>title</th>
                                          <th>description</th>
-										 <th>language</th>
+                     <th>language</th>
                                          <th>Status</th>
                                          <th style="text-align: middle;">Actions</th>
                                         </tr>
@@ -35,8 +35,8 @@
                                          <td><?php echo $key+1;?></td>
                                          <td><?php echo $new->title;?></td>
                                          <td><?php echo $new->description;?></td>
-										 <td><?php echo ucfirst($new->language);?></td>
-										 <td><?php echo ($new->status == 1 ) ? 'active': 'not active';?></td>
+                     <td><?php echo ucfirst($new->language);?></td>
+                     <td><?php echo ($new->status == 1 ) ? 'active': 'not active';?></td>
                                          <td>
                                            <?php if($this->session->userdata('role_id') == '1'){?>
                                             <a href="javascript:void(0);" data-id="<?php echo $new->id;?>" data-title="<?php echo $new->title;?>" data-description="<?php echo $new->description;?>" data-image="<?php echo $new->image;?>" data-status="<?php echo $new->status;?>"  data-language="<?php echo $new->language;?>" class="btn btn-info btn-sm item_edit" >Edit</a>
@@ -88,7 +88,7 @@
                                                     <label class="control-label col-form-label" for="description">Description</label>
                                                 </div>
                                                 <div class="col-md-8">
-												    <textarea  name="description" id="description" type="text" placeholder="description" class="form-control"></textarea>
+                            <textarea  name="description" id="description" type="text" placeholder="description" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                           
@@ -101,7 +101,7 @@
                                                 </div>
                                                
                                               </div>
-											<div class="form-group row margin-top-10">
+                      <div class="form-group row margin-top-10">
 
                                                 <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="language">Language</label>
@@ -110,12 +110,12 @@
                                                     <select name="language" id="language" class="form-control" >
                                                         <option value="" selected>Select</option>
                                                         <option value="english">English</option>
-														<option value="russian">Russian</option>
+                            <option value="russian">Russian</option>
                                                         <option value="kazakh">Kazakh</option>
                                                     </select>
                                                 </div>
                                             </div>  
-											<div class="form-group row margin-top-10">
+                      <div class="form-group row margin-top-10">
 
                                                 <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="status">Status</label>
@@ -163,7 +163,7 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <input type="hidden" name="id" id="id" type="text" placeholder="id" class="form-control">
-													 <textarea  name="title" id="title"  placeholder="Title" class="form-control"></textarea>
+                           <textarea  name="title" id="title"  placeholder="Title" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                              <div class="form-group row margin-top-10">
@@ -185,7 +185,7 @@
                                                 </div>
                                                
                                               </div>
-											  <div class="form-group row margin-top-10">
+                        <div class="form-group row margin-top-10">
 
                                                 <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="language">Language</label>
@@ -194,7 +194,7 @@
                                                     <select name="language" id="language" class="form-control" >
                                                         <option value="" selected>Select</option>
                                                         <option value="english">English</option>
-														<option value="russian">Russian</option>
+                            <option value="russian">Russian</option>
                                                         <option value="kazakh">Kazakh</option>
                                                     </select>
                                                 </div>
@@ -317,7 +317,7 @@
              var image      = $(this).data('image');
              var description = $(this).data('description');
              var status      = $(this).data('status');
-			 var language      = $(this).data('language');
+       var language      = $(this).data('language');
             
              
            
@@ -325,9 +325,17 @@
             $('#editNewsform').find('[name="title"]').val(title);
             $('#editNewsform').find('[name="description"]').val(description);
             $('#editNewsform').find('[name="status"]').val(status);
-			$('#editNewsform').find('[name="language"]').val(language);
+      $('#editNewsform').find('[name="language"]').val(language);
             $('#editNewsform').find('#image_view').attr("src","<?php echo base_url().'assets/backend/uploads/news/'?>"+image);
              $('#Modal_NewEdit').modal('show');
+             $("#editNewsform #description").summernote({
+                placeholder: 'Enter description...',
+                height:250,
+                minHeight:null,
+                maxHeight:null,
+                focus:!1,
+                dialogsInBody: true
+            });
            $('select').each(function(){
                  $(this).trigger("chosen:updated");
             })
@@ -394,7 +402,7 @@
             $('[name="id"]').val(id);
         });
 
-       $('#editNewsform').find('#image_news').on('change',function(){
+        $('#editNewsform').find('#image_news').on('change',function(){
             var id = $(this).data('id');
             $('#editNewsform').find('#image_view').attr("src","");
         });
@@ -412,6 +420,22 @@
               });
               return false;
           });
+
+          $('#Modal_NewsAdd').on('show.bs.modal', function (e) {
+            // do something...
+            $("#addNewsform #description").summernote({
+                placeholder: 'Enter description...',
+                height:250,
+                minHeight:null,
+                maxHeight:null,
+                focus:!1,
+                dialogsInBody: true
+            });
+          })
+
+        
+        /*var editor;
+        editor = $("#description").wysihtml5();*/
     })
 
 

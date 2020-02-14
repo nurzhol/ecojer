@@ -19,6 +19,8 @@
     
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/chosen.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/three-dots.css">
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/backend/css/thirdparty/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"> -->
     <style>
         #overlay{
              position: fixed;
@@ -69,6 +71,10 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <!-- <script  charset="utf-8" src="<?php echo base_url() ?>assets/backend/lib/thirdparty/summernote/summernote-bs4.min.js"></script> -->
+    <!-- <script  charset="utf-8" src="<?php echo base_url() ?>assets/backend/lib/thirdparty/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" />
 </head>
 
 <body>

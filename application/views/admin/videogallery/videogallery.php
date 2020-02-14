@@ -23,7 +23,7 @@
                                          <th>S.no</th>
                                          <th>title</th>
                                          <th>description</th>
-										  <th>language</th>
+                      <th>language</th>
                                          <th>Status</th>
                                          <th style="text-align: middle;">Actions</th>
                                         </tr>
@@ -35,8 +35,8 @@
                                          <td><?php echo $key+1;?></td>
                                          <td><?php echo $video->title;?></td>
                                          <td><?php echo $video->description;?></td>
-										 <td><?php echo ucfirst($video->language);?></td>
-										                     <td><?php echo ($video->status == 1 ) ? 'active': 'not active';?></td>
+                     <td><?php echo ucfirst($video->language);?></td>
+                                         <td><?php echo ($video->status == 1 ) ? 'active': 'not active';?></td>
                                          <td>
                                            <?php if($this->session->userdata('role_id') == '1'){?>
                                             <a href="javascript:void(0);" data-id="<?php echo $video->id;?>" data-title="<?php echo $video->title;?>" data-description="<?php echo $video->description;?>" data-thumbnail="<?php echo $video->image;?>" data-video="<?php echo $video->video;?>" data-status="<?php echo $video->status;?>" data-language="<?php echo $video->language;?>" class="btn btn-info btn-sm item_edit" >Edit</a>
@@ -88,7 +88,7 @@
                                                     <label class="control-label col-form-label" for="description">Description</label>
                                                 </div>
                                                 <div class="col-md-8">
-												    <textarea  name="description" id="description" type="text" placeholder="description" class="form-control"></textarea>
+                            <textarea  name="description" id="description" type="text" placeholder="description" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                           
@@ -101,17 +101,18 @@
                                                 </div>
                                                
                                               </div>
-											  
-											  <div class="form-group row margin-top-10">
+                        
+                        <div class="form-group row margin-top-10">
                                                <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="video">Video</label>
                                                 </div>
                                                 <div class="col-md-8">
-                                                  <input name="video" id="video" type="file" placeholder="video" class="form-control" >
+                                                  <!-- <input name="video" id="video" type="file" placeholder="video" class="form-control" > -->
+                                                  <input name="video" id="video" type="text" placeholder="Enter youtube video url" class="form-control">
                                                 </div>
                                                
                                               </div>
-											  <div class="form-group row margin-top-10">
+                        <div class="form-group row margin-top-10">
 
                                                 <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="language">Language</label>
@@ -120,12 +121,12 @@
                                                     <select name="language" id="language" class="form-control" >
                                                         <option value="" selected>Select</option>
                                                         <option value="english">English</option>
-														<option value="russian">Russian</option>
+                            <option value="russian">Russian</option>
                                                         <option value="kazakh">Kazakh</option>
                                                     </select>
                                                 </div>
                                             </div> 
-											      <div class="form-group row margin-top-10">
+                            <div class="form-group row margin-top-10">
 
                                                 <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="status">Status</label>
@@ -184,32 +185,33 @@
                             <textarea  name="description" id="description" type="text" placeholder="description" class="form-control"></textarea>
                                                 </div>
                                             </div>
-											
-											  <div class="form-group row margin-top-10">
+                      
+                        <div class="form-group row margin-top-10">
                                                <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="thumbnail">thumbnail</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                   <input name="thumbnail" id="thumbnail" type="file" placeholder="thumbnail" class="form-control" >
-												  <img id="thumbnail_view" src="#"  style="width :200px" style="height :200px">
+                          <img id="thumbnail_view" src="#"  style="width :200px" style="height :200px">
                                                 </div>
                                                
                                               </div>
-											  
-											  <div class="form-group row margin-top-10">
+                        
+                        <div class="form-group row margin-top-10">
                                                <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="video">Video</label>
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <input name="video" id="video" type="file" placeholder="video" class="form-control" >
-												    <video id="myVideo" width="320" height="240" controls>
-													  <source src="mov_bbb.mp4" type="video/mp4">
-													  Your browser does not support HTML5 video.
-													</video>
+                                                    <!-- <input name="video" id="video" type="file" placeholder="video" class="form-control" >
+                            <video id="myVideo" width="320" height="240" controls>
+                            <source src="mov_bbb.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                          </video> -->
+                                                <input name="video" id="video" type="text" placeholder="Enter youtube video url" class="form-control">
                                                 </div>
                                                
                                               </div>
-											  <div class="form-group row margin-top-10">
+                        <div class="form-group row margin-top-10">
 
                                                 <div class="col-md-4">
                                                     <label class="control-label col-form-label" for="language">Language</label>
@@ -218,7 +220,7 @@
                                                     <select name="language" id="language" class="form-control" >
                                                         <option value="" selected>Select</option>
                                                         <option value="english">English</option>
-														<option value="russian">Russian</option>
+                            <option value="russian">Russian</option>
                                                         <option value="kazakh">Kazakh</option>
                                                     </select>
                                                 </div>
@@ -293,7 +295,7 @@
                      thumbnail: {
                       required: true,
                     },
-					 video: {
+                   video: {
                       required: false,
                     },
                      status: {
@@ -309,7 +311,7 @@
                 submitHandler: function(form) {
                         var formData = new FormData( $("#addvideogalleryform")[0]);
                         formData.append('image', $('#addvideogalleryform').find("#thumbnail")[0].files[0])
-						formData.append('video', $('#addvideogalleryform').find("#video")[0].files[0])
+                        //formData.append('video', $('#addvideogalleryform').find("#video")[0].files[0])
                         
                         $.ajax({
                             url : "<?php echo base_url(); ?>admin/Adminvideogallery/add_videogallery",  
@@ -343,7 +345,7 @@
              var id      = $(this).data('id');
              var title = $(this).data('title');
              var thumbnail      = $(this).data('thumbnail');
-			 var video_src      = $(this).data('video');
+             var video_src      = $(this).data('video');
              var description = $(this).data('description');
              var status      = $(this).data('status');
              var language      = $(this).data('language');
@@ -353,22 +355,23 @@
             $('#editvideogalleryform').find('[name="title"]').val(title);
             $('#editvideogalleryform').find('[name="description"]').val(description);
             $('#editvideogalleryform').find('[name="status"]').val(status);
-			$('#editvideogalleryform').find('[name="language"]').val(language);
+            $('#editvideogalleryform').find('[name="language"]').val(language);
+            $('#editvideogalleryform').find('[name="video"]').val(video_src);
             $('#editvideogalleryform').find('#thumbnail_view').attr("src","<?php echo base_url().'assets/backend/uploads/videogallery/thumbnails/'?>"+thumbnail);
-			$("#myVideo").empty();
-			var video = document.getElementById('myVideo');
-			
-			var extension = video_src.substr( (video_src.lastIndexOf('.') +1) );
-			var source = document.createElement('source');
-			source.src = "<?php echo base_url().'assets/backend/uploads/videogallery/videos/'?>"+video_src;
-			source.type = 'video/'+extension;
-			video.appendChild(source);
-			video.load();
-			$("#myVideo").show();
+      /*$("#myVideo").empty();
+      var video = document.getElementById('myVideo');
+      
+      var extension = video_src.substr( (video_src.lastIndexOf('.') +1) );
+      var source = document.createElement('source');
+      source.src = "<?php echo base_url().'assets/backend/uploads/videogallery/videos/'?>"+video_src;
+      source.type = 'video/'+extension;
+      video.appendChild(source);
+      video.load();
+      $("#myVideo").show();*/
             $('#Modal_NewEdit').modal('show');
             $('select').each(function(){
                  $(this).trigger("chosen:updated");
-            })
+            });
         });
 
         $('#editvideogalleryform').validate({
@@ -392,7 +395,7 @@
                 submitHandler: function(form) {
                         var formData = new FormData( $("#editvideogalleryform")[0]);
                         formData.append('image', $('#editvideogalleryform').find("#thumbnail")[0].files[0])
-						formData.append('video', $('#editvideogalleryform').find("#video")[0].files[0])
+                        //formData.append('video', $('#editvideogalleryform').find("#video")[0].files[0])
                         
                         $.ajax({
                             url : "<?php echo base_url(); ?>admin/Adminvideogallery/update_videogallery",  
@@ -433,9 +436,9 @@
             var id = $(this).data('id');
             $('#editvideogalleryform').find('#thumbnail_view').attr("src","");
         });
-		$('#editvideogalleryform').find('#video').on('change',function(){
+    $('#editvideogalleryform').find('#video').on('change',function(){
             var id = $(this).data('id');
-			$("#myVideo").hide();
+      $("#myVideo").hide();
         });
         //delete record to database
          $('#btn_videogallerydelete').on('click',function(){
@@ -451,17 +454,17 @@
               });
               return false;
           });
-		  
-		  function addSourceToVideo(element, src, type) {
-				var source = document.createElement('source');
+      
+      function addSourceToVideo(element, src, type) {
+        var source = document.createElement('source');
 
-				source.src = src;
-				source.type = type;
+        source.src = src;
+        source.type = type;
 
-				element.appendChild(source);
-			}
+        element.appendChild(source);
+      }
 
-			
+      
     })
 
 
