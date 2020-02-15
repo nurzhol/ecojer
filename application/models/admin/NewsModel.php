@@ -109,6 +109,14 @@ class NewsModel extends CI_Model
         $result=$this->db->delete('news');
         return $result;
     }
+
+    function get_description($id)
+    {
+    	$this->db->select("description");
+    	$this->db->where("id", $id);
+        $query = $this->db->get("news");
+        return $query->row("description"); 
+    }
    
 }
 

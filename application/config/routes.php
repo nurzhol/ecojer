@@ -68,6 +68,7 @@ $route['createPasswordUser'] 					   = "admin/AdminLogin/createPasswordUser";
 
 
 $route['admin/news'] 			 				   = 'admin/AdminNews/all_news';
+$route['admin/news/get_description'] 			 				   = 'admin/AdminNews/get_description';
 $route['admin/projects'] 			 				   = 'admin/AdminProjects/all_projects';
 $route['admin/photogallery'] 			 				   = 'admin/AdminPhotogallery/all_photogallery';
 $route['admin/videogallery'] 			 				   = 'admin/AdminVideogallery/all_videogallery';

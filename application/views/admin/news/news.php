@@ -34,12 +34,12 @@
                                         <tr>
                                          <td><?php echo $key+1;?></td>
                                          <td><?php echo $new->title;?></td>
-                                         <td><?php echo $new->description;?></td>
+                                         <td><?php echo truncate($new->description, 200);?></td>
                      <td><?php echo ucfirst($new->language);?></td>
                      <td><?php echo ($new->status == 1 ) ? 'active': 'not active';?></td>
                                          <td>
                                            <?php if($this->session->userdata('role_id') == '1'){?>
-                                            <a href="javascript:void(0);" data-id="<?php echo $new->id;?>" data-title="<?php echo $new->title;?>" data-description="<?php echo $new->description;?>" data-image="<?php echo $new->image;?>" data-status="<?php echo $new->status;?>"  data-language="<?php echo $new->language;?>" class="btn btn-info btn-sm item_edit" >Edit</a>
+                                            <a href="javascript:void(0);" data-id="<?php echo $new->id;?>" data-title="<?php echo $new->title;?>" data-image="<?php echo $new->image;?>" data-status="<?php echo $new->status;?>"  data-language="<?php echo $new->language;?>" class="btn btn-info btn-sm item_edit" >Edit</a>
                                              <?php };?>
                                              <?php if($this->session->userdata('role_id') == '1'){?>
                                             <a href="javascript:void(0);" data-id="<?php echo $new->id;?>" class="btn btn-danger btn-sm item_delete">Delete</a>
@@ -315,9 +315,10 @@
              var id      = $(this).data('id');
              var title = $(this).data('title');
              var image      = $(this).data('image');
-             var description = $(this).data('description');
+             //var description = $(this).data('description');
+             var description = $("#desc"+id).val();
              var status      = $(this).data('status');
-       var language      = $(this).data('language');
+              var language      = $(this).data('language');
             
              
            
@@ -325,20 +326,27 @@
             $('#editNewsform').find('[name="title"]').val(title);
             $('#editNewsform').find('[name="description"]').val(description);
             $('#editNewsform').find('[name="status"]').val(status);
-      $('#editNewsform').find('[name="language"]').val(language);
+            $('#editNewsform').find('[name="language"]').val(language);
             $('#editNewsform').find('#image_view').attr("src","<?php echo base_url().'assets/backend/uploads/news/'?>"+image);
-             $('#Modal_NewEdit').modal('show');
-             $("#editNewsform #description").summernote({
-                placeholder: 'Enter description...',
-                height:250,
-                minHeight:null,
-                maxHeight:null,
-                focus:!1,
-                dialogsInBody: true
-            });
-           $('select').each(function(){
-                 $(this).trigger("chosen:updated");
-            })
+            $.post("<?=base_url("admin/news/get_description")?>", {id: id}, function(data){
+                //$('#editNewsform #description').summernote('code', '');
+                //$("#editNewsform #description").val(data.response);
+                $("#editNewsform #description").summernote({
+                  placeholder: 'Enter description...',
+                  height:250,
+                  minHeight:null,
+                  maxHeight:null,
+                  focus:!1,
+                  dialogsInBody: true
+                });
+                $("#editNewsform #description").summernote('code', data.response);
+                $('select').each(function(){
+                   $(this).trigger("chosen:updated");
+                });   
+                $('#Modal_NewEdit').modal('show');
+                
+            }, 'json');
+             
         });
 
         $('#editNewsform').validate({
@@ -431,7 +439,19 @@
                 focus:!1,
                 dialogsInBody: true
             });
-          })
+          });
+
+          /*$('#Modal_NewEdit').on('hide.bs.modal', function(e) {
+            $('#editNewsform #description').summernote('code', '');
+            $("#editNewsform #description").summernote({
+                  placeholder: 'Enter description...',
+                  height:250,
+                  minHeight:null,
+                  maxHeight:null,
+                  focus:!1,
+                  dialogsInBody: true
+                });
+          });*/
 
         
         /*var editor;
@@ -441,3 +461,12 @@
 
 
 </script>
+
+<?
+function truncate($str, $len) {
+  $tail = max(0, $len-10);
+  $trunk = substr($str, 0, $tail);
+  $trunk .= strrev(preg_replace('~^..+?[\s,:]\b|^...~', '...', strrev(substr($str, $tail, $len-$tail))));
+  return $trunk;
+}
+?>

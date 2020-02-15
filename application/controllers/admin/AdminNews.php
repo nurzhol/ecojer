@@ -212,7 +212,11 @@ class AdminNews extends CI_Controller {
         echo json_encode($data);
     }
 	
-	
+	public function get_description()
+    {
+        $description = $this->NewsModel->get_description($this->input->post("id"));
+        echo json_encode(array("response" => $description));
+    }
 	
 		
 	
