@@ -32,10 +32,10 @@
                      <div class="partners__title mb-4"><?php echo $this->lang->line('nav_stay_on_top');?></div>
                      <div id="news-slider" class="owl-carousel">
 					 
-					   <?php $j=0; if($news) {foreach($news as $new){ if($this->session->userdata('site_lang') == $new->language){ if($j<= 2){?>
+					   <?php $j=0; if($news) {foreach($news as $new){ if($this->session->userdata('site_lang') == $new->language){ if($j<= 100){?>
                         <div class="post-slide wow fadeInUp">
-                           <div class="post-img">
-                              <a href="#"><img style="width:400px;height:200px"  src="<?php echo base_url() ?>assets/backend/uploads/news/<?php echo $new->image;?>" alt="<?php echo $new->title;?>"></a>
+                           <div class="post-img" style="background-image: url(<?php echo base_url("assets/backend/uploads/news/".$new->image)?>); background-size: cover; height: 200px; background-position: center center;">
+                              <!-- <a href="#"><img style="height:200px"  src="<?php echo base_url() ?>assets/backend/uploads/news/<?php echo $new->image;?>" alt="<?php echo $new->title;?>"></a> -->
                            </div>
                            <div class="post-content" >
                               <div class="post-date">
@@ -43,16 +43,18 @@
                                  <span class="date"><?php echo date('d',strtotime($new->created_date));?></span>
                               </div>
                               <h5 class="post-title"><a href="<?php echo base_url('news/'.$new->id);?>"><?php echo $new->title;?></a></h5>
-                              <p class="post-description" style="height:200px">
+                              <p class="post-description" style="height:auto;">
                                	<?php   $new_text =$new->description;
-									           if (strlen($new->description) > 200)
+									         if (strlen($new->description) > 200)
 												{
 													// If so, cut the string at the character limit
-													$new_text = substr($new->description, 0, 200);
+													//$new_text = substr($new->description, 0, 200);
+                                       $new_text = substrwords($new->description, 200);
 													// Trim off white space
 													$new_text = trim($new_text);
+                                       //$new_text = preg_replace('/[^A-Za-z0-9\-]/', '', $new_text);
 													// Add at end of text ...
-													echo $new_text . "...";
+													echo $new_text;
 												}else{
 													echo $new_text;
 												}
