@@ -1,4 +1,8 @@
- 
+ <style type="text/css">
+    .text-conetnt img{
+      height: auto !important;
+    }
+ </style>
  
  <section class="team-section">
       <div class="pattern-layer"></div>
@@ -11,9 +15,10 @@
                      <h2><?php echo $new->title;?></strong></h2>
                   </div>
                   <div class="text-content">
-				  <img width="600" height="400" src="<?php echo base_url() ?>assets/backend/uploads/news/<?php echo $new->image; ?>">
+				  <img width="600" src="<?php echo base_url() ?>assets/backend/uploads/news/<?php echo $new->image; ?>">
                      <div class="text text-news">
-					 <br /> <?php echo $new->description;?></div>
+					 <br /> <?php echo $new->description;?>
+               </div>
 					
                   </div>
 

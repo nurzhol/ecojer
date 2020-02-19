@@ -1,4 +1,12 @@
-	<header role="banner" id="home">
+	<style type="text/css">
+    .post-description{
+      word-break: break-all;
+    }  
+    .post-content p{
+      word-break: break-all;
+    }
+   </style>
+   <header role="banner" id="home">
 			<div class="header">
 				<div class="container">
 					<div class="header__content">
@@ -34,16 +42,16 @@
 					 
 					   <?php $j=0; if($news) {foreach($news as $new){ if($this->session->userdata('site_lang') == $new->language){ if($j<= 100){?>
                         <div class="post-slide wow fadeInUp">
-                           <div class="post-img" style="background-image: url(<?php echo base_url("assets/backend/uploads/news/".$new->image)?>); background-size: cover; height: 200px; background-position: center center;">
-                              <!-- <a href="#"><img style="height:200px"  src="<?php echo base_url() ?>assets/backend/uploads/news/<?php echo $new->image;?>" alt="<?php echo $new->title;?>"></a> -->
+                           <div class="post-img">
+                              <a href="#"><img style="height:auto;" src="<?php echo base_url() ?>assets/backend/uploads/news/<?php echo $new->image;?>" alt="<?php echo $new->title;?>"></a>
                            </div>
                            <div class="post-content" >
                               <div class="post-date">
                                  <span class="month"><?php echo $this->lang->line(date('M',strtotime($new->created_date)));?></span>
                                  <span class="date"><?php echo date('d',strtotime($new->created_date));?></span>
                               </div>
-                              <h5 class="post-title"><a href="<?php echo base_url('news/'.$new->id);?>"><?php echo $new->title;?></a></h5>
-                              <p class="post-description" style="height:auto;">
+                              <h5 class="post-title"><a href="<?php echo base_url('news/'.$new->id);?>" style="width: 100%;"><?php echo $new->title;?></a></h5>
+                              <p class="post-description" style="height:auto; width: 100%; word-break: break-all;">
                                	<?php   $new_text =$new->description;
 									         if (strlen($new->description) > 200)
 												{
