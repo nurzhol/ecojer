@@ -38,3 +38,16 @@ $lang['team_10_description'] = 'Spokesman';
 
 $lang['footer_location'] = 'Nur-Sultan city, Konaev str, 10, "EmeraldTower", Block А, 22 fl.';
 $lang['footer_copyright'] = '© 2020 KAZAKHSTAN ASSOCIATION OF REGIONAL ECOLOGICAL INITIATIVES - “ECOJER” | DEVELOPMENT OF THE SITE REMARK.KZ';
+
+$lang['Jan'] = "январь";
+$lang['Feb'] = "Feb";
+$lang['Mar'] = "Mar";
+$lang['Apr'] = "Apr";
+$lang['May'] = "May";
+$lang['June'] = "June";
+$lang['July'] = "July";
+$lang['Aug'] = "Aug";
+$lang['Sep'] = "Sep";
+$lang['Oct'] = "Oct";
+$lang['Nov'] = "Nov";
+$lang['Dec'] = "Dec";

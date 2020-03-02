@@ -17,7 +17,7 @@
             <div class="column col-lg-12 col-md-12 col-sm-12">
                <div class="inner">
                   <div class="sec-title">
-                     <?xml version="1.0" encoding="iso-8859-1"?>
+                     <? echo '<?xml version="1.0" encoding="iso-8859-1"?>'; ?>
                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                      <svg version="1.1" style="width: 4%;
                      stroke: #fff;
